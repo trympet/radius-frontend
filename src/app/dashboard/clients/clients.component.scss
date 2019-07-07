@@ -1,0 +1,40 @@
+.full-width-table {
+  width: 100%;
+}
+.element-row {
+  position: relative;
+}
+
+.element-row:not(.expanded) {
+  cursor: pointer;
+}
+
+.element-row:not(.expanded):hover {
+  background: #f5f5f5;
+}
+
+.element-row.expanded {
+  border-bottom-color: transparent;
+}
+.detail-row {
+  background: #673ab7;
+  color: #fefefe;
+  padding: .5rem 3rem;
+}
+.header-row {
+  margin: 0 1rem;
+  padding: 1rem;
+  height: 75px;
+  position: relative;
+  top: 0;
+  background-color: #fefefe;
+}
+/* makes select column small */
+.mat-column-select {
+  flex: 0 0 50px;
+}
+
+button {
+  float: right;
+  margin-top: 10px;
+}
