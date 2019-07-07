@@ -1,0 +1,38 @@
+<mat-form-field style="margin-left: 1rem;" appearance="outline">
+  <input matInput (keyup)="filterSettings($event.target.value)">
+  <mat-label>Filter settings</mat-label>
+</mat-form-field>
+<form [formGroup]="contactForm">
+  <mat-form-field class="form-item">
+    <input matInput formControlName="firstname">
+    <mat-label>First name</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="lastname">
+    <mat-label>Last name</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="address">
+    <mat-label>Address</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="company">
+    <mat-label>Company</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="zip">
+    <mat-label>ZIP code</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="email">
+    <mat-label>Email</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="city">
+    <mat-label>City</mat-label>
+  </mat-form-field>
+  <mat-form-field class="form-item">
+    <input matInput formControlName="phone">
+    <mat-label>Phone</mat-label>
+  </mat-form-field>
+</form>

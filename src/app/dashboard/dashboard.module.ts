@@ -22,10 +22,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateClientComponent } from './clients/update-client/update-client.component';
 import {ShContextMenuModule} from 'ng2-right-click-menu' // right click context menu
 import { HttpClientModule } from '@angular/common/http';
+import { ConnectionComponent } from './clients/update-client/connection/connection.component';
+import { ContactComponent } from './clients/update-client/contact/contact.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent,],
+  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent, ConnectionComponent, ContactComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,

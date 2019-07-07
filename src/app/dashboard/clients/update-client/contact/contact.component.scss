@@ -1,0 +1,18 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+}
+.form-item {
+  flex: 1 1 250px;
+  padding: 0 1rem;
+}
+.form-row {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+.mat-form-field-disabled {
+  visibility: hidden;
+  display: none;
+}

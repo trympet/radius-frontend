@@ -1,118 +1,13 @@
 <mat-tab-group class="mat-elevation-z4">
   <mat-tab label="Connection settings">
     <div class="tab-wrapper">
-      <mat-form-field style="margin-left: 1rem;" appearance="outline">
-        <input matInput (keyup)="filterSettings($event.target.value)">
-        <mat-label>Filter settings</mat-label>
-      </mat-form-field>
-      <form [formGroup]="settingsForm" id="settingsForm">
-          <mat-form-field class="form-item">
-            <mat-label>Blocked</mat-label>
-            <mat-select formControlName="blocked">
-              <mat-option [value]=true>Yes</mat-option>
-              <mat-option [value]=false>No</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>Group</mat-label>
-            <mat-select formControlName="group">
-              <mat-option>test-01</mat-option>
-              <mat-option>test-02</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>Access point</mat-label>
-            <mat-select formControlName="accessPoint">
-              <mat-option value="true">switch-01</mat-option>
-              <mat-option value="false">switch-02</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>NAS</mat-label>
-            <mat-select formControlName="nas">
-              <mat-option>test-01</mat-option>
-              <mat-option>test-02</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>Connection type</mat-label>
-            <mat-select formControlName="connectionType">
-              <mat-option value="true">switch-01</mat-option>
-              <mat-option value="false">switch-02</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>Router</mat-label>
-            <mat-select formControlName="router">
-              <mat-option value="true">switch-01</mat-option>
-              <mat-option value="false">switch-02</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <mat-label>IPv6 enabled</mat-label>
-            <mat-select formControlName="ipv6Enabled">
-              <mat-option [value]="true">True</mat-option>
-              <mat-option [value]="false">False</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="ipv4Address">
-            <mat-label>IPv4 Address</mat-label>
-          </mat-form-field>
-    
-          <mat-form-field class="form-item">
-            <input matInput formControlName="macAddress">
-            <mat-label>MAC Address</mat-label>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="ipv6Address">
-            <mat-label>IPv6 Address</mat-label>
-          </mat-form-field>
-    
-          <mat-form-field class="form-item">
-            <input matInput formControlName="ipv6Prefix">
-            <mat-label>IPv6 Prefix</mat-label>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="username">
-            <mat-label>Username</mat-label>
-          </mat-form-field>
-    
-          <mat-form-field class="form-item">
-            <input matInput formControlName="password">
-            <mat-label>Password</mat-label>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="hostname">
-            <mat-label>Hostname</mat-label>
-          </mat-form-field>
-    
-          <mat-form-field class="form-item">
-            <input matInput formControlName="ipv4Network">
-            <mat-label>LAN Network</mat-label>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="ssid">
-            <mat-label>SSID</mat-label>
-          </mat-form-field>
-    
-          <mat-form-field class="form-item">
-            <input matInput formControlName="psk">
-            <mat-label>LAN PSK</mat-label>
-          </mat-form-field>
-          <mat-form-field class="form-item">
-            <input matInput formControlName="domainName">
-            <mat-label>Domain name</mat-label>
-          </mat-form-field>
-      </form>
+        <client-connection></client-connection>
+
     </div>
   </mat-tab>
-    <div class="tab-wrapper">
-
-    </div>
   <mat-tab label="Address and contact information">
     <div class="tab-wrapper">
-
+      <client-contact></client-contact>
     </div>
   </mat-tab>
   <mat-tab label="Notes">
@@ -120,7 +15,6 @@
   </mat-tab>
   <mat-tab label="Auths">
     <div class="tab-wrapper">
-
     </div>
   </mat-tab>
   <mat-tab label="Sessions">
