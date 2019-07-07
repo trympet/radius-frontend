@@ -1,88 +1,90 @@
 <div class="mat-elevation-z8" style="position: relative;">
-    <div class="header-row">
-      <mat-form-field>
-        <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter clients">
-      </mat-form-field>
+  <div class="header-row">
+    <mat-form-field>
+      <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter clients">
+    </mat-form-field>
 
-    </div>
-    <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+  </div>
+  <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
-        <mat-header-cell *matHeaderCellDef>
-          <mat-checkbox
-            (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
-          >
-          </mat-checkbox>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <mat-checkbox
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
-          >
-          </mat-checkbox>
-        </mat-cell>
-      </ng-container>
-      <!-- first name Column -->
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>First Namet</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.firstName}}</mat-cell>
-      </ng-container>  
-      <!-- Last name Column -->
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.lastName}}</mat-cell>
-      </ng-container>
-      <!-- Company Name Column -->
-      <ng-container matColumnDef="company">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.company}}</mat-cell>
-      </ng-container>
-      <!-- Group Column -->
-      <ng-container matColumnDef="group">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Group</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.group}}</mat-cell>
-      </ng-container>
-      <!-- NAS Column -->
-      <ng-container matColumnDef="nas">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>NAS</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.nas}}</mat-cell>
-      </ng-container>
-      <!-- Access Point Column -->
-      <ng-container matColumnDef="accessPoint">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Access Point</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.accessPoint}}</mat-cell>
-      </ng-container>
-      <!-- Connection Type Column -->
-      <ng-container matColumnDef="connection">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Connection</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.connection}}</mat-cell>
-      </ng-container>
-      <!-- Username Column -->
-      <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.userName}}</mat-cell>
-      </ng-container>
-      <!-- IP address Column -->
-      <ng-container matColumnDef="ipAddress">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>IP adr.</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.ipAddress}}</mat-cell>
-      </ng-container>
-  
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row"
-       ></mat-row>
-    </mat-table>
-  
-    <mat-paginator #paginator
-        [length]="dataSource?.data.length"
-        [pageIndex]="0"
-        [pageSize]="50"
-        [pageSizeOptions]="[25, 50, 100, 250, 500]">
-    </mat-paginator>
-  </div>
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <!-- first name Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>First Namet</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.firstName}}</mat-cell>
+    </ng-container>
+    <!-- Last name Column -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.lastName}}</mat-cell>
+    </ng-container>
+    <!-- Company Name Column -->
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.company}}</mat-cell>
+    </ng-container>
+    <!-- Group Column -->
+    <ng-container matColumnDef="group">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Group</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.group}}</mat-cell>
+    </ng-container>
+    <!-- NAS Column -->
+    <ng-container matColumnDef="nas">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>NAS</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.nas}}</mat-cell>
+    </ng-container>
+    <!-- Access Point Column -->
+    <ng-container matColumnDef="accessPoint">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Access Point</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.accessPoint}}</mat-cell>
+    </ng-container>
+    <!-- Connection Type Column -->
+    <ng-container matColumnDef="connection">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Connection</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.connection}}</mat-cell>
+    </ng-container>
+    <!-- Username Column -->
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.userName}}</mat-cell>
+    </ng-container>
+    <!-- IP address Column -->
+    <ng-container matColumnDef="ipAddress">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>IP adr.</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.ipAddress}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [shAttachMenu]="menu"
+      [shMenuData]="row" [routerLink]="['update', row.clientId]"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250, 500]">
+  </mat-paginator>
+</div>
+
+<sh-context-menu #menu>
+  <ng-template shContextMenuItem let-data (click)="onClick($event)">
+    <div>
+      Download config
+    </div>
+  </ng-template>
+  <ng-template shContextMenuItem let-data (click)="onClick($event)">
+    <div>
+      Delete client
+    </div>
+  </ng-template>
+</sh-context-menu>
