@@ -18,10 +18,13 @@ import {
 } from '@angular/material';
 import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { UpdateClientComponent } from './clients/update-client/update-client.component';
+import {ShContextMenuModule} from 'ng2-right-click-menu' // right click context menu
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent,],
+  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -39,7 +42,9 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ShContextMenuModule,
+    HttpClientModule
   ]
 })
 export class DashboardModule { }
