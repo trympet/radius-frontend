@@ -24,3 +24,36 @@ export class ClientService {
   }
 
 }
+
+export interface ConnectionSettings {
+  clientId: number,
+  blocked: boolean,
+  nas: string,
+  group: string,
+  accessPoint: string,
+  connectionType: string,
+  macAddress: string,
+  ipv4Address: string,
+  ipv4Network: string,
+  ipv6Address: string,
+  ipv6Prefix: string,
+  ipv6Enabled: boolean,
+  hostname: string,
+  userName: string,
+  password: string,
+  domainName: string,
+  router: string,
+  ssid: string,
+  psk: string,
+}
+
+export interface ContactInfo {
+  firstname: string,
+  lastname: string,
+  address: string,
+  company: string,
+  zip: string,
+  email: string,
+  city: string,
+  phone: number,
+}

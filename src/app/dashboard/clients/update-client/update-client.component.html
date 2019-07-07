@@ -1,1 +1,137 @@
-<p>update-client works!</p>
+<mat-tab-group class="mat-elevation-z4">
+  <mat-tab label="Connection settings">
+    <div class="tab-wrapper">
+      <mat-form-field style="margin-left: 1rem;" appearance="outline">
+        <input matInput (keyup)="filterSettings($event.target.value)">
+        <mat-label>Filter settings</mat-label>
+      </mat-form-field>
+      <form #settingsForm="ngForm">
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <mat-label>Blocked</mat-label>
+            <mat-select>
+              <mat-option value="true">Yes</mat-option>
+              <mat-option value="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-item">
+            <mat-label>Group</mat-label>
+            <mat-select>
+              <mat-option>test-01</mat-option>
+              <mat-option>test-02</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <mat-label>Access point</mat-label>
+            <mat-select>
+              <mat-option value="true">switch-01</mat-option>
+              <mat-option value="false">switch-02</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-item">
+            <mat-label>NAS</mat-label>
+            <mat-select>
+              <mat-option>test-01</mat-option>
+              <mat-option>test-02</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <mat-label>Connection type</mat-label>
+            <mat-select>
+              <mat-option value="true">switch-01</mat-option>
+              <mat-option value="false">switch-02</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-item">
+            <mat-label>IPv6 enabled</mat-label>
+            <mat-select>
+              <mat-option value="true">True</mat-option>
+              <mat-option value="false">False</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>IPv4 Address</mat-label>
+          </mat-form-field>
+    
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>MAC Address</mat-label>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>IPv6 Address</mat-label>
+          </mat-form-field>
+    
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>IPv6 Prefix</mat-label>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>Username</mat-label>
+          </mat-form-field>
+    
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>Password</mat-label>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>Hostname</mat-label>
+          </mat-form-field>
+    
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>LAN Network</mat-label>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>SSID</mat-label>
+          </mat-form-field>
+    
+          <mat-form-field class="form-item">
+            <input matInput>
+            <mat-label>LAN PSK</mat-label>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </mat-tab>
+    <div class="tab-wrapper">
+
+    </div>
+  <mat-tab label="Address and contact information">
+    <div class="tab-wrapper">
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Notes">
+    <div class="tab-wrapper"></div>
+  </mat-tab>
+  <mat-tab label="Auths">
+    <div class="tab-wrapper">
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Sessions">
+    <div class="tab-wrapper">
+
+    </div>
+  </mat-tab>
+</mat-tab-group>
+

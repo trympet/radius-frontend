@@ -1,0 +1,10 @@
+GET /clients
+  firstName: string,
+  lastName: string,
+  company: string,
+  group: string,
+  nas: string,
+  accessPoint: string,
+  connection: string,
+  userName: string,
+  ipAddress: string,

@@ -15,6 +15,7 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatSelectModule,
+  MatTabsModule,
 } from '@angular/material';
 import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
@@ -44,7 +45,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     FormsModule,
     ShContextMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ]
 })
 export class DashboardModule { }

@@ -13,7 +13,7 @@
         <!-- *ngIf="isHandset$ | async" -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Radius Management</span>
+      <a routerLink="/dashboard">Radius Management</a>
       <div *ngIf="(isHandset$ | async) ? false : true">
         <a type="button" mat-button *ngFor="let nav of navLinks" [routerLink]="nav.routerLink"
           routerLinkActive="focus"

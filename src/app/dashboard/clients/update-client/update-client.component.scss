@@ -1,0 +1,16 @@
+.tab-wrapper {
+  min-height: 600px;
+  padding: 1rem;
+}
+form {
+  min-height: 600px;
+}
+.form-item {
+  flex: 1 1 250px;
+  padding: 0 1rem;
+}
+.form-row {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}

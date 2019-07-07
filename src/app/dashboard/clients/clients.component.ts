@@ -56,9 +56,7 @@ export class ClientsComponent implements OnInit {
   displayedColumns: String[] = [
     'firstName',
     'lastName',
-    'company',
     'group',
-    'nas',
     'accessPoint',
     'connection',
     'userName',
