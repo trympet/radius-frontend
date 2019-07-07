@@ -1,31 +1,30 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      mode="over"
-      [opened]="false">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-    <a mat-list-item *ngFor="let nav of navLinks" [routerLink]="nav.routerLink">{{nav.name}}</a>
+      <a mat-list-item *ngFor="let nav of navLinks" [routerLink]="nav.routerLink">{{nav.name}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-    <!-- can toggle sidenav if small screen -->
-    <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      <!-- sidenav toggler -->
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <!-- *ngIf="isHandset$ | async" -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button>
-    <span>Radius Management</span>
-    <div *ngIf="(isHandset$ | async) ? false : true">
-        <a type="button" mat-button *ngFor="let nav of navLinks" [routerLink]="nav.routerLink" routerLinkActive="focus">{{nav.name}}</a>
-    </div>
+      </button>
+      <span>Radius Management</span>
+      <div *ngIf="(isHandset$ | async) ? false : true">
+        <a type="button" mat-button *ngFor="let nav of navLinks" [routerLink]="nav.routerLink"
+          routerLinkActive="focus"
+          
+          >{{nav.name}}
+        </a>
+      </div>
     </mat-toolbar>
     <!-- Content from router goes here  -->
-    <ng-content></ng-content>
+    <main>
+      <ng-content></ng-content>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
-  
