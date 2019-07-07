@@ -76,4 +76,12 @@ export class ClientsComponent implements OnInit {
     this.dataSource.filter = filter.trim().toLowerCase()
   }
 
+  downloadConfig(id) {
+
+  }
+  
+  deleteClient(id) {
+    
+  }
+
 }
