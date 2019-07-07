@@ -7,7 +7,7 @@
   </div>
   <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
+    <!-- <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
@@ -18,7 +18,7 @@
           [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
         </mat-checkbox>
       </mat-cell>
-    </ng-container>
+    </ng-container> -->
     <!-- first name Column -->
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>First Namet</mat-header-cell>
@@ -77,12 +77,12 @@
 </div>
 
 <sh-context-menu #menu>
-  <ng-template shContextMenuItem let-data (click)="onClick($event)">
+  <ng-template shContextMenuItem let-data (click)="downloadConfig(data.clientId)">
     <div>
       Download config
     </div>
   </ng-template>
-  <ng-template shContextMenuItem let-data (click)="onClick($event)">
+  <ng-template shContextMenuItem let-data (click)="deleteClient(data.clientId)">
     <div>
       Delete client
     </div>
