@@ -3,7 +3,10 @@
   padding: 1rem;
 }
 form {
-  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 800px;
+  margin: auto;
 }
 .form-item {
   flex: 1 1 250px;
@@ -13,4 +16,8 @@ form {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
+}
+.hidden {
+  visibility: hidden;
+  display: none;
 }

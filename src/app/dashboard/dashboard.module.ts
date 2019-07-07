@@ -18,7 +18,7 @@ import {
   MatTabsModule,
 } from '@angular/material';
 import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateClientComponent } from './clients/update-client/update-client.component';
 import {ShContextMenuModule} from 'ng2-right-click-menu' // right click context menu
 import { HttpClientModule } from '@angular/common/http';
@@ -50,6 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

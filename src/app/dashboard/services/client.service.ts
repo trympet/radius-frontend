@@ -39,7 +39,7 @@ export interface ConnectionSettings {
   ipv6Prefix: string,
   ipv6Enabled: boolean,
   hostname: string,
-  userName: string,
+  username: string,
   password: string,
   domainName: string,
   router: string,
