@@ -80,20 +80,17 @@ export class UpdateClientComponent implements OnInit {
 
   filterSettings(value) {
     const filteredNames = Object.keys(this.settingsForm.controls).filter(key => !key.startsWith(value))
-    document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'))
+    this.settingsForm.enable()
+    // document.querySelectorAll('.hidden').forEach(el => el.classList.remove('hidden'))
     filteredNames.forEach( key => {
-      const el = document.querySelector(`*[formControlName=${key}]`)
-      if (el) {
-        el.parentElement.parentElement.parentElement.parentElement.classList.add('hidden')
-      } else {
-        console.log(key);
-        
-      }
-    })
-    
-    console.log();
-    
-    
+      this.settingsForm.controls[key].disable()
+      // const el = document.querySelector(`*[formControlName=${key}]`)
+      // if (el) {
+      //   el.parentElement.parentElement.parentElement.parentElement.classList.add('hidden')
+      // } else {
+      //   console.log(key);
+      // }
+    })  
   }
 
 }
