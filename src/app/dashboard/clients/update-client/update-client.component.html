@@ -5,18 +5,18 @@
         <input matInput (keyup)="filterSettings($event.target.value)">
         <mat-label>Filter settings</mat-label>
       </mat-form-field>
-      <form #settingsForm="ngForm">
+      <form [formGroup]="settingsForm">
         <div class="form-row">
           <mat-form-field class="form-item">
             <mat-label>Blocked</mat-label>
-            <mat-select>
+            <mat-select formControlName="blocked">
               <mat-option value="true">Yes</mat-option>
               <mat-option value="false">No</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="form-item">
             <mat-label>Group</mat-label>
-            <mat-select>
+            <mat-select formControlName="group">
               <mat-option>test-01</mat-option>
               <mat-option>test-02</mat-option>
             </mat-select>
@@ -25,7 +25,7 @@
         <div class="form-row">
           <mat-form-field class="form-item">
             <mat-label>Access point</mat-label>
-            <mat-select>
+            <mat-select formControlName="accessPoint">
               <mat-option value="true">switch-01</mat-option>
               <mat-option value="false">switch-02</mat-option>
             </mat-select>
