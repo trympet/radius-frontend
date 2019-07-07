@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { Routes } from '@angular/router'
 export interface Client {
+  clientId: number,
   firstName: string,
   lastName: string,
   company: string,
@@ -26,6 +27,7 @@ export class ClientsComponent implements OnInit {
   dataSource
   demoData: Client[] = [
     {
+      clientId: 1,
       firstName: 'Trym',
       lastName: 'Flogard',
       company: '',
@@ -37,6 +39,7 @@ export class ClientsComponent implements OnInit {
       ipAddress: '', 
     },
     {
+      clientId: 2,
       firstName: 'Alexander',
       lastName: 'Oliemans',
       company: '',
