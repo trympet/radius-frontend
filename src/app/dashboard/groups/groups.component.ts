@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+export interface Groups {
+  name: string,
+  download: number,
+  upload: number,
+  concurrent: number,
+  expiry: number,
+}
+
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',

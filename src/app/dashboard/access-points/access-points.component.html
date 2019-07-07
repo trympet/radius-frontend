@@ -1,1 +1,61 @@
-<p>access-points works!</p>
+<div class="mat-elevation-z8" style="position: relative;">
+  <div class="header-row">
+    <mat-form-field>
+      <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter APs">
+    </mat-form-field>
+  </div>
+  <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()">
+          <ng-container>
+              {{row.name}}
+            </ng-container>
+            <sat-popover #p
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="row.name = $event">
+              <inline-edit [value]="row.name"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+    <!-- ip Column -->
+    <ng-container matColumnDef="ip">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>IP address</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()">
+          <ng-container>
+              {{row.ip}}
+            </ng-container>
+            <sat-popover #p
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.ip = $event : false">
+              <inline-edit [value]="row.ip"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250, 500]">
+  </mat-paginator>
+</div>
+
+<sh-context-menu #menu>
+  <ng-template shContextMenuItem let-data (click)="downloadConfig(data.clientId)">
+    <div>
+      Download config
+    </div>
+  </ng-template>
+  <ng-template shContextMenuItem let-data (click)="deleteClient(data.clientId)">
+    <div>
+      Delete client
+    </div>
+  </ng-template>
+</sh-context-menu>

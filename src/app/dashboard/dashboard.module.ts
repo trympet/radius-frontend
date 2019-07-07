@@ -24,10 +24,12 @@ import {ShContextMenuModule} from 'ng2-right-click-menu' // right click context 
 import { HttpClientModule } from '@angular/common/http';
 import { ConnectionComponent } from './clients/update-client/connection/connection.component';
 import { ContactComponent } from './clients/update-client/contact/contact.component';
+import { InlineEditComponent } from './shared/inline-edit/inline-edit.component';
+import { SatPopoverModule } from '@ncstate/sat-popover';
 
 
 @NgModule({
-  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent, ConnectionComponent, ContactComponent,],
+  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent, ConnectionComponent, ContactComponent, InlineEditComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -52,7 +54,8 @@ import { ContactComponent } from './clients/update-client/contact/contact.compon
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SatPopoverModule
   ]
 })
 export class DashboardModule { }
