@@ -43,16 +43,3 @@
     [pageSizeOptions]="[25, 50, 100, 250, 500]">
   </mat-paginator>
 </div>
-
-<sh-context-menu #menu>
-  <ng-template shContextMenuItem let-data (click)="downloadConfig(data.clientId)">
-    <div>
-      Download config
-    </div>
-  </ng-template>
-  <ng-template shContextMenuItem let-data (click)="deleteClient(data.clientId)">
-    <div>
-      Delete client
-    </div>
-  </ng-template>
-</sh-context-menu>
