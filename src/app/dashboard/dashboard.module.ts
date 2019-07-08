@@ -16,6 +16,7 @@ import {
   MatCheckboxModule,
   MatSelectModule,
   MatTabsModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,10 +27,11 @@ import { ConnectionComponent } from './clients/update-client/connection/connecti
 import { ContactComponent } from './clients/update-client/contact/contact.component';
 import { InlineEditComponent } from './shared/inline-edit/inline-edit.component';
 import { SatPopoverModule } from '@ncstate/sat-popover';
+import { TableHeaderComponent } from './shared/table/table-header.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent, ConnectionComponent, ContactComponent, InlineEditComponent,],
+  declarations: [HomeComponent, DashboardComponent, NavComponent, ClientsComponent, GroupsComponent, AccessPointsComponent, UpdateClientComponent, ConnectionComponent, ContactComponent, InlineEditComponent, TableHeaderComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -55,7 +57,8 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    SatPopoverModule
+    SatPopoverModule,
+    MatTooltipModule
   ]
 })
 export class DashboardModule { }

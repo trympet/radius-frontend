@@ -21,14 +21,7 @@
   color: #fefefe;
   padding: .5rem 3rem;
 }
-.header-row {
-  margin: 0 1rem;
-  padding: 1rem;
-  height: 75px;
-  position: relative;
-  top: 0;
-  background-color: #fefefe;
-}
+
 /* makes select column small */
 .mat-column-select {
   flex: 0 0 50px;
@@ -38,3 +31,6 @@ button {
   float: right;
   margin-top: 10px;
 }
+
+.mat-table { background: inherit }
+.mat-paginator { background: inherit }

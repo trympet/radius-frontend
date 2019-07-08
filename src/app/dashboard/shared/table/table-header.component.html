@@ -1,0 +1,15 @@
+<div class="header-row">
+  <div class="left">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" (keyup)="filterOutput($event.target.value)" [placeholder]="filterLabel">
+      <mat-label>{{ filterLabel }}</mat-label>
+    </mat-form-field>
+  </div>
+  <div class="right">
+    <button mat-raised-button matTooltip="Revert changes" style="margin: 0 1rem" (click)="reset()">
+
+      <mat-icon aria-hidden="false" class="right" color="primary" aria-label="Revert changes" style="margin: auto">settings_backup_restore</mat-icon>
+    </button>
+    <button mat-raised-button [disabled]="saveDisabled" class="right" [hidden]="noSaveButton" (click)="save()">Save changes</button>
+  </div>
+</div>

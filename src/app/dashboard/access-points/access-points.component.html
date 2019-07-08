@@ -1,12 +1,6 @@
 <div class="mat-elevation-z8" style="position: relative;">
-  <div class="header-row">
-    <mat-form-field appearance="outline">
-      <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter APs">
-      <mat-label>Filter APs</mat-label>
-    </mat-form-field>
-    <button mat-raised-button [disabled]="!tableUpdated" class="right">Save changes</button>
-
-  </div>
+  <table-header filterLabel="Filter access points" (filterValue)="filterTable($event)" [saveDisabled]="!tableUpdated"
+  (onReset)="reset()"></table-header>
   <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- name Column -->
     <ng-container matColumnDef="name">

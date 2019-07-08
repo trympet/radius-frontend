@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+  settingsChanged = false
   contactInfo
   contactForm: FormGroup
 
@@ -27,6 +28,11 @@ export class ContactComponent implements OnInit {
     }
 
     this.contactForm = this.fb.group(this.contactInfo)
+
+    // init change detection
+    this.contactForm.valueChanges.subscribe( () => {
+      this.settingsChanged = true
+    })
   }
 
   // filters and disables formcontrols in formgroup 
@@ -39,6 +45,19 @@ export class ContactComponent implements OnInit {
           this.contactForm.controls[key].disable()
         }
       })
+  }
+
+  reset() {
+    this.contactForm.patchValue({
+      firstname: 'Alexander',
+      lastname: 'Oliemans',
+      address: 'Damsport 365',
+      company: '',
+      zip: '9728PS',
+      email: 'alexanderoliemans@hotmail.com',
+      city: 'Groningen',
+      phone: '0683609965',
+    })
   }
 
 }

@@ -15,7 +15,7 @@ export interface AccessPoints {
 })
 export class AccessPointsComponent implements OnInit {
 
-  dataSource: MatTableDataSource<AccessPoints[]>
+  dataSource: MatTableDataSource<AccessPoints>
 
   tableUpdated: boolean = false
 
@@ -40,7 +40,7 @@ export class AccessPointsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<any>(this.demoData)
+    this.dataSource = new MatTableDataSource<AccessPoints>(this.demoData)
     this.dataSource.paginator = this.paginator
   }
 
@@ -54,6 +54,20 @@ export class AccessPointsComponent implements OnInit {
       console.log('updated!');
       
     }
+  }
+
+  reset() {
+    this.dataSource.data = [
+      {
+        name: 'demo',
+        ip: '192.168.1.1',
+      },
+      {
+        name: 'demo2',
+        ip: '192.168.1.3',
+      }
+    ]
+  
   }
 
 }

@@ -4,17 +4,16 @@
   height: 75px;
   position: relative;
   top: 0;
-  background-color: #fefefe;
   display: flex;
   justify-content: space-between;
 }
 
 .right {
+  display: flex;
+  align-content: center;
   align-self: center;
 }
 
-.mat-row {
-  cursor: pointer;
+button[hidden] {
+  display: none;
 }
-.mat-table { background: inherit }
-.mat-paginator { background: inherit }

@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService, ConnectionSettings } from '../../../services/client.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 
 @Component({
   selector: 'client-connection',
   templateUrl: './connection.component.html',
-  styleUrls: ['./connection.component.scss']
+  styleUrls: ['./connection.component.scss'],
 })
-export class ConnectionComponent implements OnInit {
+export class ConnectionComponent implements OnInit{
+  settingsChanged = false
+
   client: ConnectionSettings
   settingsForm: FormGroup
   formElement
 
   constructor(
     private clientService: ClientService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
 
     
@@ -70,6 +73,11 @@ export class ConnectionComponent implements OnInit {
       ssid: this.client.ssid,
       psk: this.client.psk,
     })
+
+    // init change detection
+    this.settingsForm.valueChanges.subscribe( () => {
+      this.settingsChanged = true
+    })
   }
 
   // filters and disables formcontrols in formgroup 
@@ -84,4 +92,26 @@ export class ConnectionComponent implements OnInit {
       })
   }
 
+  reset() {
+    this.settingsForm.patchValue({
+      blocked: this.client.blocked,
+      nas: this.client.nas,
+      group: this.client.group,
+      accessPoint: this.client.accessPoint,
+      connectionType: this.client.connectionType,
+      macAddress: this.client.macAddress,
+      ipv4Address: this.client.ipv4Address,
+      ipv4Network: this.client.ipv4Network,
+      ipv6Address: this.client.ipv6Address,
+      ipv6Prefix: this.client.ipv6Prefix,
+      ipv6Enabled: this.client.ipv6Enabled,
+      hostname: this.client.hostname,
+      username: this.client.username,
+      password: this.client.password,
+      domainName: this.client.domainName,
+      router: this.client.router,
+      ssid: this.client.ssid,
+      psk: this.client.psk,
+    })
+  }
 }

@@ -1,11 +1,5 @@
 <div class="mat-elevation-z8" style="position: relative;">
-  <div class="header-row">
-    <mat-form-field appearance="outline">
-      <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter clients">
-      <mat-label>Filter clients</mat-label>
-    </mat-form-field>
-
-  </div>
+  <table-header filterLabel="Filter clients" (filterValue)="filterTable($event)" noSaveButton=true [saveDisabled]="!tableUpdated"></table-header>
   <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- Checkbox Column -->
     <!-- <ng-container matColumnDef="select">
