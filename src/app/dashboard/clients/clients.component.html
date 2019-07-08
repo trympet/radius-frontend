@@ -1,7 +1,8 @@
 <div class="mat-elevation-z8" style="position: relative;">
   <div class="header-row">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter clients">
+      <mat-label>Filter clients</mat-label>
     </mat-form-field>
 
   </div>
