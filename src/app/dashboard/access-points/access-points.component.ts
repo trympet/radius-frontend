@@ -17,7 +17,7 @@ export class AccessPointsComponent implements OnInit {
 
   dataSource: MatTableDataSource<AccessPoints[]>
 
-  updated: boolean = false
+  tableUpdated: boolean = false
 
   displayedColumns = ['name', 'ip']
 
@@ -48,14 +48,12 @@ export class AccessPointsComponent implements OnInit {
     this.dataSource.filter = filter.trim().toLowerCase()
   }
 
-  update(element, event) {
-    this.dataSource.connect()
-    element = event
-    this.dataSource._updateChangeSubscription()
-    this.updated = true
-    console.log(element, event, this.dataSource);
-    
-    
+  update(updated: boolean) {
+    if (updated) {
+      this.tableUpdated = true
+      console.log('updated!');
+      
+    }
   }
 
 }

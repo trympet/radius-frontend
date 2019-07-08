@@ -1,14 +1,17 @@
 <div class="mat-elevation-z8" style="position: relative;">
   <div class="header-row">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput type="text" (keyup)="filterTable($event.target.value)" placeholder="Filter APs">
+      <mat-label>Filter APs</mat-label>
     </mat-form-field>
+    <button mat-raised-button [disabled]="!tableUpdated" class="right">Save changes</button>
+
   </div>
   <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()">
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()" matRipple>
           <ng-container>
               {{row.name}}
             </ng-container>
@@ -16,30 +19,30 @@
                 hasBackdrop
                 xAlign="start"
                 yAlign="start"
-                (closed)="row.name = $event">
-              <inline-edit [value]="row.name"></inline-edit>
+                (closed)="$event ? row.name = $event : false">
+              <inline-edit [value]="row.name" length="65"></inline-edit>
             </sat-popover>
       </mat-cell>
     </ng-container>
     <!-- ip Column -->
     <ng-container matColumnDef="ip">
       <mat-header-cell *matHeaderCellDef mat-sort-header>IP address</mat-header-cell>
-      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()">
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="popover" (click)="popover.open()" matRipple>
           <ng-container>
               {{row.ip}}
             </ng-container>
-            <sat-popover #p
+            <sat-popover #popover
                 hasBackdrop
                 xAlign="start"
                 yAlign="start"
                 (closed)="$event ? row.ip = $event : false">
-              <inline-edit [value]="row.ip"></inline-edit>
+              <inline-edit [value]="row.ip" length="15" (valueChange)="update($event)"></inline-edit>
             </sat-popover>
       </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="50"
