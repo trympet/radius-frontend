@@ -16,9 +16,8 @@
       <a routerLink="/dashboard">Radius Management</a>
       <div *ngIf="(isHandset$ | async) ? false : true">
         <a type="button" mat-button *ngFor="let nav of navLinks" [routerLink]="nav.routerLink"
-          routerLinkActive="focus"
-          
-          >{{nav.name}}
+          routerLinkActive="focus" [disabled]="nav.disabled">
+          {{nav.name}}
         </a>
       </div>
     </mat-toolbar>
