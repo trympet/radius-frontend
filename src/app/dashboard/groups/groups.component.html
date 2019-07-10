@@ -1,1 +1,93 @@
-<p>groups works!</p>
+<div class="mat-elevation-z8" style="position: relative;">
+  <table-header filterLabel="Filter groups" (filterValue)="filterTable($event)" [saveDisabled]="!tableUpdated"
+  (onReset)="reset()"></table-header>
+  <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="p" (click)="p.open()" matRipple>
+          <ng-container>
+              {{row.name}}
+            </ng-container>
+            <sat-popover #p
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.name = $event : false">
+              <inline-edit [value]="row.name" length="65"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+    <!-- Download Column -->
+    <ng-container matColumnDef="download">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Download (mbps)</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="popover" (click)="popover.open()" matRipple>
+          <ng-container>
+              {{row.download}}
+            </ng-container>
+            <sat-popover #popover
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.download = $event : false">
+              <inline-edit [value]="row.download" length="9999" (valueChange)="update($event)"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+    <!-- upload Column -->
+    <ng-container matColumnDef="upload">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Upload (mbps)</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="popover" (click)="popover.open()" matRipple>
+          <ng-container>
+              {{row.upload}}
+            </ng-container>
+            <sat-popover #popover
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.upload = $event : false">
+              <inline-edit [value]="row.upload" length="9999" (valueChange)="update($event)"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+    <!-- concurrent Column -->
+    <ng-container matColumnDef="concurrent">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Concurrent users</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="popover" (click)="popover.open()" matRipple>
+          <ng-container>
+              {{row.concurrent}}
+            </ng-container>
+            <sat-popover #popover
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.concurrent = $event : false">
+              <inline-edit [value]="row.concurrent" length="9999" (valueChange)="update($event)"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+    <!-- expiry Column -->
+    <ng-container matColumnDef="expiry">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Expiry (TTL)</mat-header-cell>
+      <mat-cell *matCellDef="let row" [satPopoverAnchor]="popover" (click)="popover.open()" matRipple>
+          <ng-container>
+              {{row.expiry}}
+            </ng-container>
+            <sat-popover #popover
+                hasBackdrop
+                xAlign="start"
+                yAlign="start"
+                (closed)="$event ? row.expiry = $event : false">
+              <inline-edit [value]="row.expiry" length="9999" (valueChange)="update($event)"></inline-edit>
+            </sat-popover>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250, 500]">
+  </mat-paginator>
+</div>
