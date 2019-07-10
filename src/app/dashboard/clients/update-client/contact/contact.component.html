@@ -1,4 +1,4 @@
-<table-header filterLabel="Filter settings" (filterValue)="filterSettings($event)" [saveDisabled]="!tableUpdated"
+<table-header filterLabel="Filter settings" (filterValue)="filterSettings($event)" [saveDisabled]="!settingsChanged"
 (onReset)="reset()"></table-header>
 
 <form [formGroup]="contactForm">

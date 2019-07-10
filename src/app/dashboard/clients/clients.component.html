@@ -72,12 +72,12 @@
 </div>
 
 <sh-context-menu #menu>
-  <ng-template shContextMenuItem let-data (click)="downloadConfig(data.clientId)">
+  <ng-template shContextMenuItem let-data (click)="downloadConfig($event)">
     <div>
       Download config
     </div>
   </ng-template>
-  <ng-template shContextMenuItem let-data (click)="deleteClient(data.clientId)">
+  <ng-template shContextMenuItem let-data (click)="deleteClient($event)">
     <div>
       Delete client
     </div>
