@@ -20,8 +20,23 @@ export class ClientService {
    * @param {number} clientId - ID of client
    */
   getClient(clientId: number) {
-    return this.http.get(this.apiUrl + 'clients/')
+    return this.http.get(this.apiUrl + 'clients', {params: {"id": clientId.toString()}})
   }
+  getConfig(clientId: number) {
+    return this.http.get(this.apiUrl + 'clients/config', {params: {"id": clientId.toString()}}).subscribe()
+  }
+
+  pushConnectionSettings(formValues: ConnectionSettings) {
+    return this.http.post(this.apiUrl + 'clients/connection', formValues).subscribe()
+  }
+  pushContactSettings(formValues: ConnectionSettings) {
+    return this.http.post(this.apiUrl + 'clients/contact', formValues).subscribe()
+  }
+
+  deleteClient(clientId) {
+    this.http.delete(this.apiUrl + 'clients/delete', {params: {"id": clientId.toString()}}).subscribe()
+  }
+
 
 }
 

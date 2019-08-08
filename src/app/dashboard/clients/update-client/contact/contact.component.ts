@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   contactInfo
   contactForm: FormGroup
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private clientService: ClientService) { }
 
   ngOnInit() {
     this.contactInfo = {
@@ -58,6 +58,9 @@ export class ContactComponent implements OnInit {
       city: 'Groningen',
       phone: '0683609965',
     })
+  }
+  save() {
+    this.clientService.pushContactSettings(this.contactForm.value)
   }
 
 }

@@ -34,6 +34,9 @@ export class InlineEditComponent {
   get length() { return this.inputLength }
   set length(x: number) { this.inputLength = x }
 
+  @Input()
+  set row(x) {this.row = x}
+
   @Output() valueChange = new EventEmitter()
 
 
@@ -57,7 +60,7 @@ export class InlineEditComponent {
   onSubmit() {
     if (this.popover) {
       this.popover.close(this.comment);
-      this.valueChange.emit(true)
+      this.valueChange.emit([true, this.row])
     }
   }
   
@@ -65,7 +68,7 @@ export class InlineEditComponent {
     if (this.popover) {
       this.popover.close();
       this.comment = this._value // resets comment to original value
-      this.valueChange.emit(false)
+      this.valueChange.emit([false])
     }
   }
 }

@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8" style="position: relative;">
-  <table-header filterLabel="Filter access points" (filterValue)="filterTable($event)" [saveDisabled]="!tableUpdated"
-  (onReset)="reset()"></table-header>
+  <table-header filterLabel="Filter access points" (filterValue)="filterTable($event)" [saveDisabled]="!updatedRows.length"
+  (onReset)="reset()" (onSave)="save()"></table-header>
   <mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
     <!-- name Column -->
     <ng-container matColumnDef="name">
@@ -14,7 +14,7 @@
                 xAlign="start"
                 yAlign="start"
                 (closed)="$event ? row.name = $event : false">
-              <inline-edit [value]="row.name" length="65"></inline-edit>
+              <inline-edit [value]="row.name" length="65" (valueChange)="update($event, row)"></inline-edit>
             </sat-popover>
       </mat-cell>
     </ng-container>
@@ -30,7 +30,7 @@
                 xAlign="start"
                 yAlign="start"
                 (closed)="$event ? row.ip = $event : false">
-              <inline-edit [value]="row.ip" length="15" (valueChange)="update($event)"></inline-edit>
+              <inline-edit [value]="row.ip" length="15" (valueChange)="update($event, row)"></inline-edit>
             </sat-popover>
       </mat-cell>
     </ng-container>

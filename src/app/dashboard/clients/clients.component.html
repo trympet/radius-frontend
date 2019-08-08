@@ -63,7 +63,7 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [shAttachMenu]="menu"
-      [shMenuData]="row" [routerLink]="['update', row.clientId]"></mat-row>
+      [shMenuData]="row.clientId" [routerLink]="['update', row.clientId]"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="50"
@@ -72,12 +72,12 @@
 </div>
 
 <sh-context-menu #menu>
-  <ng-template shContextMenuItem let-data (click)="downloadConfig($event)">
+  <ng-template shContextMenuItem let-data (click)="downloadConfig($event.data)">
     <div>
       Download config
     </div>
   </ng-template>
-  <ng-template shContextMenuItem let-data (click)="deleteClient($event)">
+  <ng-template shContextMenuItem let-data (click)="deleteClient($event.data)">
     <div>
       Delete client
     </div>

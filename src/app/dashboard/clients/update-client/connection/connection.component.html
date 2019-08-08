@@ -1,5 +1,5 @@
 <table-header filterLabel="Filter settings" (filterValue)="filterSettings($event)" [saveDisabled]="!settingsChanged"
-(onReset)="reset()"></table-header>
+(onReset)="reset()" (onSave)="save()"></table-header>
 <form [formGroup]="settingsForm">
   <mat-form-field class="form-item">
     <mat-label>Blocked</mat-label>

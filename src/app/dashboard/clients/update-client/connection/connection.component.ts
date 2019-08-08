@@ -114,4 +114,7 @@ export class ConnectionComponent implements OnInit{
       psk: this.client.psk,
     })
   }
+  save() {
+    this.clientService.pushConnectionSettings(this.settingsForm.value)
+  }
 }

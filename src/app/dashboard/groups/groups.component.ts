@@ -2,14 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { GroupService, Group } from '../services/group.service';
 
-export interface Groups {
-  name: string,
-  download: number,
-  upload: number,
-  concurrent: number,
-  expiry: number,
-}
 
 @Component({
   selector: 'app-groups',
@@ -18,14 +12,15 @@ export interface Groups {
 })
 export class GroupsComponent implements OnInit {
 
-  dataSource: MatTableDataSource<Groups>
+  dataSource: MatTableDataSource<Group>
 
-  tableUpdated: boolean = false
+  updatedRows: Array<any> = [] // table rows that have been updated
 
   displayedColumns = ['name', 'download', 'upload', 'concurrent', 'expiry']
 
-  demoData: Groups[] = [
+  demoData: Group[] = [
     {
+      id: 0,
       name: 'demo',
       download: 100,
       upload: 10,
@@ -39,10 +34,10 @@ export class GroupsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  constructor() { }
+  constructor( private groupService: GroupService) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<Groups>(this.demoData)
+    this.dataSource = new MatTableDataSource<Group>(this.demoData)
     this.dataSource.paginator = this.paginator
   }
 
@@ -50,17 +45,18 @@ export class GroupsComponent implements OnInit {
     this.dataSource.filter = filter.trim().toLowerCase()
   }
 
-  update(updated: boolean) {
+  update(updated, row) {
     if (updated) {
-      this.tableUpdated = true
-      console.log('updated!');
-      
+      if(!this.updatedRows.find(updated => updated.id === row.id)) {
+        this.updatedRows.push(row);
+      }
     }
   }
 
   reset() {
     this.dataSource.data = [
       {
+        id: 0,
         name: 'demo',
         download: 100,
         upload: 10,
@@ -68,7 +64,10 @@ export class GroupsComponent implements OnInit {
         expiry: 2592000,
       }
     ]
-  
+  }
+
+  save() {
+    this.groupService.pushGroupSettings(this.updatedRows)
   }
 
 }

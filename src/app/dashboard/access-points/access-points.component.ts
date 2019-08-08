@@ -2,11 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface AccessPoints {
-  name: string,
-  ip: string,
-}
+import { AccessPointService, AccessPoint } from '../services/accesspoint.service';
 
 @Component({
   selector: 'app-access-points',
@@ -15,18 +11,22 @@ export interface AccessPoints {
 })
 export class AccessPointsComponent implements OnInit {
 
-  dataSource: MatTableDataSource<AccessPoints>
+  dataSource: MatTableDataSource<AccessPoint>
 
   tableUpdated: boolean = false
 
+  updatedRows: Array<AccessPoint> = []
+
   displayedColumns = ['name', 'ip']
 
-  demoData: AccessPoints[] = [
+  demoData: AccessPoint[] = [
     {
+      id: 0,
       name: 'demo',
       ip: '192.168.1.1',
     },
     {
+      id: 1,
       name: 'demo2',
       ip: '192.168.1.3',
     }
@@ -37,10 +37,10 @@ export class AccessPointsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  constructor() { }
+  constructor( private accessPointService: AccessPointService) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<AccessPoints>(this.demoData)
+    this.dataSource = new MatTableDataSource<AccessPoint>(this.demoData)
     this.dataSource.paginator = this.paginator
   }
 
@@ -48,26 +48,30 @@ export class AccessPointsComponent implements OnInit {
     this.dataSource.filter = filter.trim().toLowerCase()
   }
 
-  update(updated: boolean) {
+  update(updated, row) {
     if (updated) {
-      this.tableUpdated = true
-      console.log('updated!');
-      
+      if(!this.updatedRows.find(updated => updated.id === row.id)) {
+        this.updatedRows.push(row);
+      }
     }
   }
 
   reset() {
     this.dataSource.data = [
       {
+        id: 0,
         name: 'demo',
         ip: '192.168.1.1',
       },
       {
+        id: 1,
         name: 'demo2',
         ip: '192.168.1.3',
       }
     ]
-  
+  }
+  save() {
+    this.accessPointService.pushAccessPointSettings(this.updatedRows)
   }
 
 }

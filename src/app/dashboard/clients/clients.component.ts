@@ -3,6 +3,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Routes } from '@angular/router'
+import { ClientService } from '../services/client.service';
 
 export interface Client {
   clientId: number,
@@ -66,7 +67,7 @@ export class ClientsComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor() { }
+  constructor( private clientService: ClientService) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Client>(this.demoData)
@@ -78,11 +79,11 @@ export class ClientsComponent implements OnInit {
   }
 
   downloadConfig(id) {
-
+    this.clientService.getConfig(id)
   }
   
   deleteClient(id) {
-    
+    this.clientService.deleteClient(id)
   }
 
 }
